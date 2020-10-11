@@ -40,6 +40,12 @@ module.exports = function (screen) {
           runCommand(screen, 'yarn outdated');
         },
       },
+      publish: {
+        keys: ['p'],
+        callback: function () {
+          runCommand(screen, 'yarn publish');
+        },
+      },
     },
   });
 
