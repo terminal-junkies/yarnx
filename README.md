@@ -8,16 +8,15 @@ An advanced CLI interface for [yarn](https://classic.yarnpkg.com/en/)
 
 Features:
 - Search packages from the terminal
-- Run your project tasks from
+- Run your project tasks with yarn
 - Install a selected package with one keystroke
-- Run other npm tasks within your project
 - Mnemonic key-bindings for installing packages
 
 
 ## Install
 
 ```
-npm install --global @terminal-junkies/yarnx
+yarn global add @terminal-junkies/yarnx
 ```
 
 ## Usage
@@ -33,16 +32,16 @@ yarnx
 ### Home
 ![home page](screenshots/home.png)
 
-### Package
+### Dependency Info
 ![package info](screenshots/package-info.png)
 
-### Package
+### Tasks
 ![tasks](screenshots/tasks.png)
 
 ### Search
 ![search page](screenshots/search.png)
 
-### Package
+### Package Page
 ![package page](screenshots/package-page.png)
 
 ## FAQS
