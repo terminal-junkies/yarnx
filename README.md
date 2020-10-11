@@ -33,11 +33,17 @@ yarnx
 ### Home
 ![home page](screenshots/home.png)
 
+### Package
+![package info](screenshots/package-info.png)
+
+### Package
+![tasks](screenshots/tasks.png)
+
 ### Search
 ![search page](screenshots/search.png)
 
 ### Package
-![package page](screenshots/package.png)
+![package page](screenshots/package-page.png)
 
 ## FAQS
 
