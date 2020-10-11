@@ -26,8 +26,8 @@ yarnx
 ```
 
 ## Screenshots
+[![asciicast](https://asciinema.org/a/364635.svg)](https://asciinema.org/a/364635)
 
-[![asciicast](https://asciinema.org/a/7ajz46JAVDVR9nV5ZMwhLLzAT.svg)](https://asciinema.org/a/7ajz46JAVDVR9nV5ZMwhLLzAT)
 
 ### Home
 ![home page](screenshots/home.png)
