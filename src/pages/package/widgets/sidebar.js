@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 
-const blessed = require("@blessed/neo-blessed");
-const getTheme = require("../../../utils/getTheme");
+const blessed = require('@blessed/neo-blessed');
+const getTheme = require('../../../utils/getTheme');
 
 module.exports = function (screen, pkg) {
   const theme = getTheme();
@@ -12,11 +12,11 @@ module.exports = function (screen, pkg) {
 
   const sidebar = blessed.box({
     parent: screen,
-    top: "20%+1",
-    left: "70%+1",
-    width: "30%",
-    height: "75%-1",
-    label: "Sidebar",
+    top: '20%+1',
+    left: '70%+1',
+    width: '30%',
+    height: '75%-1',
+    label: 'Sidebar',
     border: theme.box.border,
     style: theme.box.style,
     tags: true,
@@ -39,9 +39,9 @@ module.exports = function (screen, pkg) {
   {${blue}-fg}{bold}{underline}Last publish{/}
   ${pkg.date.toString()}
   {${blue}-fg}{bold}{underline}Collaborators{/}
-  ${pkg.maintainers.map((m) => m.username).join(",")}
+  ${pkg.maintainers.map((m) => m.username).join(',')}
   {${blue}-fg}{bold}{underline}Keywords{/}
-  ${pkg.keywords.join("\n  ")}
+  ${pkg.keywords.join('\n  ')}
   `;
 
   sidebar.setContent(_content);

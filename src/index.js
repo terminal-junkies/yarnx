@@ -1,19 +1,19 @@
-"use strict";
+'use strict';
 
-const blessed = require("@blessed/neo-blessed");
-const { search } = require("libnpm");
-const minimist = require("minimist");
+const blessed = require('@blessed/neo-blessed');
+const { search } = require('libnpm');
+const minimist = require('minimist');
 const screen = blessed.screen({
   fullUnicode: true,
 });
 
 const options = minimist(process.argv.slice(2));
-const scheme = options.theme || "Dracula";
+const scheme = options.theme || 'Dracula';
 const colors = require(`blessed-themes/themes/${scheme}`);
-const theme = require("./styles")(colors.colors);
+const theme = require('./styles')(colors.colors);
 
-const initHomePage = require("./pages/home");
-const initPackagePage = require("./pages/package");
+const initHomePage = require('./pages/home');
+const initPackagePage = require('./pages/package');
 
 module.exports = function () {
   const program = blessed.program();
@@ -22,11 +22,11 @@ module.exports = function () {
 
   const logo = blessed.box({
     parent: screen,
-    content: "yarnx",
+    content: 'yarnx',
     top: 0,
     left: 0,
-    width: "35%",
-    height: "10%",
+    width: '35%',
+    height: '10%',
     border: theme.logo.border,
     style: theme.logo.style,
   });
@@ -34,12 +34,12 @@ module.exports = function () {
   const searchBox = blessed.form({
     parent: screen,
     top: 0,
-    left: "35%+1",
-    width: "65%",
-    height: "10%",
+    left: '35%+1',
+    width: '65%',
+    height: '10%',
     border: theme.searchBox.border,
     style: theme.searchBox.style,
-    content: " Search packages (Press Enter to search): ",
+    content: ' Search packages (Press Enter to search): ',
     keys: true,
   });
 
@@ -54,15 +54,15 @@ module.exports = function () {
     width: 80,
     left: 1,
     top: 1,
-    name: "text",
+    name: 'text',
     inputOnFocus: true,
   });
 
   let packages = [];
-  text.on("submit", (data) => {
+  text.on('submit', (data) => {
     // show loading
 
-    loadingWidget.load("Searching packages, please wait...");
+    loadingWidget.load('Searching packages, please wait...');
     if (data) {
       search(data).then((results) => {
         packages = results;
@@ -80,21 +80,21 @@ module.exports = function () {
 
   const loadingWidget = blessed.loading({
     parent: screen,
-    top: "center",
-    left: "center",
-    height: "shrink",
-    width: "shrink",
-    border: "line",
+    top: 'center',
+    left: 'center',
+    height: 'shrink',
+    width: 'shrink',
+    border: 'line',
     hidden: true,
   });
 
   const searchResults = blessed.list({
     parent: screen,
-    top: "center",
-    left: "center",
-    width: "50%",
-    height: "50%",
-    label: "Search Results",
+    top: 'center',
+    left: 'center',
+    width: '50%',
+    height: '50%',
+    label: 'Search Results',
     keys: true,
     vi: true,
     style: theme.searchResults.style,
@@ -102,7 +102,7 @@ module.exports = function () {
     hidden: true,
   });
 
-  searchResults.on("select", (node) => {
+  searchResults.on('select', (node) => {
     let idx = searchResults.getItemIndex(node);
     const pkg = packages[idx];
     searchResults.detach();
@@ -112,11 +112,11 @@ module.exports = function () {
     packagePage.show();
   });
 
-  screen.key("q", () => {
+  screen.key('q', () => {
     return process.exit(0); // eslint-disable-line
   });
 
-  screen.key(["/"], () => {
+  screen.key(['/'], () => {
     text.focus();
   });
 

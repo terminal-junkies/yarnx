@@ -2,18 +2,18 @@
 
 const blessed = require('@blessed/neo-blessed');
 const getTheme = require('../../../utils/getTheme');
-const runCommand = require('../../../utils/runCommand');
+const showDepInfo = require('../../../utils/showDepInfo');
 
 module.exports = function (screen) {
   const theme = getTheme();
 
-  const taskList = blessed.list({
+  const deps = blessed.list({
     parent: screen,
     top: '40%+1',
-    left: 0,
+    left: '35%+1',
     width: '35%',
     height: '60%-3',
-    label: 'Project Tasks',
+    label: ' Dependencies ',
     keys: true,
     vi: true,
     style: theme.taskList.style,
@@ -21,13 +21,14 @@ module.exports = function (screen) {
   });
 
   const pkg = require('../../../../package.json');
-  taskList.setItems(Object.keys(pkg.scripts));
+  const items = Object.keys(pkg.dependencies) || [];
+  deps.setItems(items);
+  deps.setLabel(` Dependencies (${items.length}) `);
 
-  taskList.on('select', (node) => {
+  deps.on('select', (node) => {
     const { content } = node;
-    const cmd = `yarn ${content}`;
-    runCommand(screen, cmd);
+    showDepInfo(screen, content, pkg);
   });
 
-  return taskList;
+  return deps;
 };

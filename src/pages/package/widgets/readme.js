@@ -1,8 +1,8 @@
-"use strict";
+'use strict';
 
-const contrib = require("@blessed/blessed-contrib");
-const getTheme = require("../../../utils/getTheme");
-const githubReadme = require("github-readme");
+const contrib = require('@blessed/blessed-contrib');
+const getTheme = require('../../../utils/getTheme');
+const githubReadme = require('github-readme');
 
 module.exports = function (screen, pkg) {
   //console.log(pkg.links);
@@ -10,11 +10,11 @@ module.exports = function (screen, pkg) {
   const { border, style } = theme.box;
   const readme = contrib.markdown({
     parent: screen,
-    label: " README ",
-    top: "20%+1",
-    left: "0",
-    width: "70%",
-    height: "75%-1",
+    label: ' README ',
+    top: '20%+1',
+    left: '0',
+    width: '70%',
+    height: '75%-1',
     border,
     style,
     keys: true,
@@ -37,7 +37,7 @@ module.exports = function (screen, pkg) {
 
     githubReadme(user, repo, (err, md) => {
       if (err) {
-        readme.setMarkdown("Some error occurred in fetching README");
+        readme.setMarkdown('Some error occurred in fetching README');
       } else {
         readme.setMarkdown(md);
       }
